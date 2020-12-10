@@ -12,6 +12,7 @@
     "align-text": "^1.0.2",
     "chalk": "^4.1.0",
     "nodemon": "^2.0.6",
+    "ora": "^5.1.0",
     "readline-sync": "^1.4.10"
   }
 }

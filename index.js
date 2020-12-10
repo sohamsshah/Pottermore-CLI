@@ -1,7 +1,8 @@
 // importings
 const chalk = require('chalk');
 const readLineSync = require('readline-sync');
-const alignText = require('align-text')
+const alignText = require('align-text');
+const ora = require('ora');
 
 //Global variable declaration
 let scores = [0,0,0,0]
@@ -36,10 +37,18 @@ Don't forget to answer the questions honestly. Play this quiz and find out which
   }
 }
 
+function getRandomColor(){
+  lis = ['red', 'green', 'yellow', 'blue','magenta','cyan']
+  const randomElement = lis[Math.floor(Math.random() * lis.length)];
+
+  return randomElement;
+}
+
 
 
 function quizQuestionPrint(question, no){
-  let answer = readLineSync.question(no.toString() + ". " + question.question + question.options + `${chalk.bold.redBright("Your Answer: ")}`);
+  let color = getRandomColor();
+  let answer = readLineSync.question(chalk.bold.keyword(color)(no.toString() + ". ") + chalk.underline.bold.keyword(color)(question.question) +  question.options + "\n" + `${chalk.bold.keyword('orange')("Your Answer: ")}`);
   let index = 0;
   if(answer === "A"){
     index = 0;
@@ -54,7 +63,7 @@ function quizQuestionPrint(question, no){
     index = 3;
   }
   else{
-    console.log("Oops, seems an invalid choice!\n");
+    log(chalk.bold.red("Oops, seems an invalid choice!\n"));
     quizQuestionPrint(question, no);
   }
 
@@ -191,7 +200,23 @@ let questions = [
 ]
 
 let userName = greeting()
-questions.forEach((question, index) => quizQuestionFlow(question,index+1));
+//questions.forEach((question, index) => quizQuestionFlow(question,index+1));
+scores = [1,2,3,4]
+
+
+const throbber = ora({
+  text: ' Sorting Hat is analyzing your answers. Please Wait...',
+  spinner: {
+    frames: ['🎩', '🌠', '🍷', '🐍'],
+    interval: 300, // Optional
+  },
+}).start();
+
+// Simulating some asynchronous work for 10 seconds...
+setTimeout(() => {
+  throbber.stop();
+}, 1000 * 10);
+
 
 
 
