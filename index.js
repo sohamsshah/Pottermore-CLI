@@ -1,36 +1,46 @@
 // importings
 const chalk = require('chalk');
 const readLineSync = require('readline-sync');
+const alignText = require('align-text')
 
 //Global variable declaration
 let scores = [0,0,0,0]
+const log = console.log
 
 // To greet the user
 function greeting(){
-  console.log("==================================================\n")
+  log(chalk.blue("==================================================\n"));
   
-  console.log("======= POTTERMORE QUIZ 2020 Edition =============\n")
+  log(chalk.blue("======= ") + chalk.yellowBright.bold.bgBlack("POTTERMORE QUIZ 2020 Edition") + chalk.blue(" =============\n"));
   
-  console.log("==================================================\n")
+  log(chalk.blue("==================================================\n"));
 
-  console.log("\nThis is the official Pottermore Sorting Hat QUIZ 2020 that you often see in Pottermore. This Quiz contains all the questions about the Sorting Hat asks on Pottermore to sort you into your House.\n\n Don't forget to answer the questions honestly. Play this quiz and find out which house best matches you. Have fun!\n")
+  log(`
+This is the official ` + chalk.redBright.bold.bgBlack("Pottermore Sorting Hat QUIZ 2020") + ` that you often see in Pottermore. This Quiz contains all the questions about the Sorting Hat asks on Pottermore to sort you into your deserving House.
 
-  console.log("==================================================\n")
+Don't forget to answer the questions honestly. Play this quiz and find out which house best matches you. Have fun!!
+
+`);
+
+  log(chalk.blue("==================================================\n"));
 
   while(true){
-    let userName = readLineSync.question('Hey Potterhead; May I have your name? ');
+    let userName = readLineSync.question(chalk.bold(
+    `Hey ${chalk.magentaBright.bold('Potterhead')}; Before we start, May I have your name? `));
     if(userName !== ""){
       return userName;
     }
     else{
-      console.log("Whoops. Try again \n");
+      console.log("Whoops :(  Try again \n");
     }
   }
 }
 
+
+
 function quizQuestionPrint(question, no){
-  let answer = readLineSync.question(no.toString() + ". " + question.question + question.options);
-  index = 0;
+  let answer = readLineSync.question(no.toString() + ". " + question.question + question.options + `${chalk.bold.redBright("Your Answer: ")}`);
+  let index = 0;
   if(answer === "A"){
     index = 0;
   }
@@ -43,7 +53,7 @@ function quizQuestionPrint(question, no){
   else if(answer === "D"){
     index = 3;
   }
-  else if (answer === "E"){
+  else{
     console.log("Oops, seems an invalid choice!\n");
     quizQuestionPrint(question, no);
   }
@@ -180,12 +190,9 @@ let questions = [
 
 ]
 
-// questions.forEach((question, index) => quizQuestionFlow(question,index+1));
-scores = [1,2,5,4]
 let userName = greeting()
+questions.forEach((question, index) => quizQuestionFlow(question,index+1));
 
-
-console.log(housePrint(findMax(scores)))
 
 
 
