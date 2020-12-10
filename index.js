@@ -10,11 +10,11 @@ const log = console.log
 
 // To greet the user
 function greeting(){
-  log(chalk.blue("==================================================\n"));
+  //log(chalk.blue("==================================================\n"));
   
-  log(chalk.blue("======= ") + chalk.yellowBright.bold.bgBlack("POTTERMORE QUIZ 2020 Edition") + chalk.blue(" =============\n"));
+  log(chalk.yellowBright.bold.bgBlack.underline("POTTERMORE QUIZ 2020 Edition"));
   
-  log(chalk.blue("==================================================\n"));
+  //log(chalk.blue("==================================================\n"));
 
   log(`
 This is the official ` + chalk.redBright.bold.bgBlack("Pottermore Sorting Hat QUIZ 2020") + ` that you often see in Pottermore. This Quiz contains all the questions about the Sorting Hat asks on Pottermore to sort you into your deserving House.
@@ -23,7 +23,7 @@ Don't forget to answer the questions honestly. Play this quiz and find out which
 
 `);
 
-  log(chalk.blue("==================================================\n"));
+  //log(chalk.blue("==================================================\n"));
 
   while(true){
     let userName = readLineSync.question(chalk.bold(
@@ -204,18 +204,18 @@ let userName = greeting()
 scores = [1,2,3,4]
 
 
-const throbber = ora({
-  text: ' Sorting Hat is analyzing your answers. Please Wait...',
-  spinner: {
-    frames: ['🎩', '🌠', '🍷', '🐍'],
-    interval: 300, // Optional
-  },
-}).start();
+// const throbber = ora({
+//   text: ' Sorting Hat is analyzing your answers. Please Wait...',
+//   spinner: {
+//     frames: ['🎩', '🌠', '🍷', '🐍'],
+//     interval: 300, // Optional
+//   },
+// }).start();
 
-// Simulating some asynchronous work for 10 seconds...
-setTimeout(() => {
-  throbber.stop();
-}, 1000 * 10);
+// // Simulating some asynchronous work for 10 seconds...
+// setTimeout(() => {
+//   throbber.stop();
+// }, 1000 * 10);
 
 
 
