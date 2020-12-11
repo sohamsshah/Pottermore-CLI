@@ -10,11 +10,7 @@ const log = console.log
 
 // To greet the user
 function greeting(){
-  //log(chalk.blue("==================================================\n"));
-  
   log(chalk.yellowBright.bold.bgBlack.underline("POTTERMORE QUIZ 2020 Edition"));
-  
-  //log(chalk.blue("==================================================\n"));
 
   log(`
 This is the official ` + chalk.redBright.bold.bgBlack("Pottermore Sorting Hat QUIZ 2020") + ` that you often see in Pottermore. This Quiz contains all the questions about the Sorting Hat asks on Pottermore to sort you into your deserving House.
@@ -23,18 +19,81 @@ Don't forget to answer the questions honestly. Play this quiz and find out which
 
 `);
 
-  //log(chalk.blue("==================================================\n"));
-
   while(true){
-    let userName = readLineSync.question(chalk.bold(
+    var userName = readLineSync.question(chalk.bold(
     `Hey ${chalk.magentaBright.bold('Potterhead')}; Before we start, May I have your name? `));
     if(userName !== ""){
-      return userName;
+      break
     }
     else{
       console.log("Whoops :(  Try again \n");
     }
   }
+
+  log(`
+Please consider answering the following questions! Press 'Q' to Quit anytime out of the QUIZ.
+
+${chalk.bold.bgBlack.green.underline('QUESTIONS\n')}`)
+
+return userName;;
+
+}
+
+function slytherin(userName){
+  log(`${chalk.underline.bold.yellowBright('Sorting Hat🎩 says:')}
+Congratulations ${chalk.italic.blue(userName)}! You belong to ${chalk.bold.black.bgGreenBright('Slytherin')}.
+
+${chalk.underline.bold.bgMagenta('We have found some few amazing facts about your personality as a Slythernin:')}
+
+${chalk.italic.green(`"Or perhaps in Slytherin you will make your real friends, those cunning folk use any means to achieve their end
+-from Harry Potter and the Sorcerer’s Stone"`)}
+
+You will acheive goals through any means necessary. You are dominant,decisive, active, and results-driven.  To you, it is better to ask for forgiveness than permission. 
+
+You would rather lead than follow, and they are very self-confident. Highly competitive, You are active and task-oriented. You are risk-takers and problem solvers. You don’t care if they are liked, they care if they are in control.`);
+}
+
+
+function gryffindor(userName){
+  console.log(`${chalk.underline.bold.yellowBright('Sorting Hat🎩 says:')}
+Congratulations ${chalk.italic.blue(userName)}! You belong to ${chalk.bold.bgRed('Gryffindor')}.
+
+${chalk.underline.bold.bgMagenta('We have found some few amazing facts about your personality as a Gryffindor:')}
+
+${chalk.red.italic(`“You might belong in Gryffindor, where dwell the brave at heart. Their daring , nerve, and chivalry set Gryffindors apart.”
+- from Harry Potter and the Sorcerer’s Stone`)}
+
+You are Inflential. Optimistic, brave, and motivational, it is not hard to imagine that “the Chosen One” came from the ranks of this house. Chivalry also numbers amongst the traits of this house/personality style. 
+
+You are Inspiring, talkative, persuasive, interesting, and people-oriented, You just love being in the limelight. Nothing makes you happier than when your bold-colored banners are flying in the Great Hall because you just won the House Cup.`);
+}
+
+function ravenClaw(userName){
+  console.log(`${chalk.underline.bold.yellowBright('Sorting Hat🎩 says:')}
+Congratulations ${chalk.italic.blue(userName)}! You belong to ${chalk.bold.bgYellowBright('Ravenclaw')}.
+
+${chalk.underline.bold.bgMagenta('We have found some few amazing facts about your personality as a RavenClaw:')}
+
+${chalk.yellowBright.italic(`“Or yet in wise old Ravenclaw, if you’ve a ready mind, Where those of wit and learning, will always find their kind.”
+- from Harry Potter and the Sorcerer’s Stone`)}
+
+You are task-oriented, and for the Ravenclaws this means working very hard to achieve good grades. You are analytical, systematic, and calculating. You excel at puzzles and at improving upon existing systems. 
+
+Open-minded to new possibilities, you are excellent problem-solvers because you pay attention to details and see the things that no one else sees. But fun fact is, hardly any Ravenclaw actually identifies his/her potential. You are amazing, pen my words down! `);
+}
+
+function hufflePuff(userName){
+   console.log(`${chalk.underline.bold.yellowBright('Sorting Hat🎩 says:')}
+Congratulations ${chalk.italic.blue(userName)}! You belong to ${chalk.bold.bgBlue('Hufflepuff')}.
+
+${chalk.underline.bold.bgMagenta('We have found some few amazing facts about your personality as a Hufflepuffian:')}
+
+${chalk.blue.italic(`“You might belong in Hufflepuff, where they are just and loyal, those patient Hufflepuffs are true and unafraid of toil.”
+- from Harry Potter and The Sorcerer’s Stone`)};
+
+You are smart, steady and thoughtful. You are loyal, true friends, and steadfast. You are quite reliable, slow and steady, and very hard workers. You always desire to have security, stability, and a team-oriented atmosphere. 
+
+Sure, you don’t tend to win the Quidditch Cup, but you’re just happy that everyone had a good time playing and no one got hurt. You love to be in the moment and enjoy it to the fullest. Less competent, pure excellence.`);
 }
 
 function getRandomColor(){
@@ -43,7 +102,6 @@ function getRandomColor(){
 
   return randomElement;
 }
-
 
 
 function quizQuestionPrint(question, no){
@@ -61,6 +119,10 @@ function quizQuestionPrint(question, no){
   }
   else if(answer === "D"){
     index = 3;
+  }
+  else if(answer =="Q"){
+    log("Bye Bye. Sad to see you go. :(");
+    process.exit(22)
   }
   else{
     log(chalk.bold.red("Oops, seems an invalid choice!\n"));
@@ -93,15 +155,15 @@ function findMax(lis){
   return max_index
 }
 
-function housePrint(index){
+function housePrint(index,userName){
   if(index === 0){
-    slytherin();
+    slytherin(userName);
   }
   else if(index === 1){
-    gryffindor(); 
+    gryffindor(userName); 
   }
   else if(index === 2){
-    hufflePuff();
+    hufflePuff(userName);
    
   }
   else if(index === 3){
@@ -109,62 +171,20 @@ function housePrint(index){
   }
 }
 
-function slytherin(){
-  console.log(`${chalk.underline.bold.yellowBright('Sorting Hat🎩 says:')}
-Congratulations ${chalk.italic.blue(userName)}! You belong to ${chalk.bold.bgGreenBright('Slytherin')}.
+function goodByePrint(){
+log(`${chalk.bgYellow.bold(`
 
-${chalk.underline.bold.bgMagenta('We have found some few amazing facts about your personality as a Slythernin:')}
-
-${chalk.italic.green(`"Or perhaps in Slytherin you will make your real friends, those cunning folk use any means to achieve their end
--from Harry Potter and the Sorcerer’s Stone"`)}
-
-You will acheive goals through any means necessary. You are dominant,decisive, active, and results-driven.  To you, it is better to ask for forgiveness than permission. 
-
-You would rather lead than follow, and they are very self-confident. Highly competitive, You are active and task-oriented. You are risk-takers and problem solvers. You don’t care if they are liked, they care if they are in control.`);
-}
+---------------------------
 
 
-function gryffindor(){
-  console.log(`${chalk.underline.bold.yellowBright('Sorting Hat🎩 says:')}
-Congratulations ${chalk.italic.blue(userName)}! You belong to ${chalk.bold.bgRed('Gryffindor')}.
+Liked it? Know which HOUSE your friends are in and add yourself too for the HOGWARTS to see! 
 
-${chalk.underline.bold.bgMagenta('We have found some few amazing facts about your personality as a Gryffindor:')}
+Comment at: https://github.com/sohamsshah/Pottermore-CLI/issues/1
 
-${chalk.red.italic(`“You might belong in Gryffindor, where dwell the brave at heart. Their daring , nerve, and chivalry set Gryffindors apart.”
-- from Harry Potter and the Sorcerer’s Stone`)}
+Thanks for playing!
+`)}`)}
 
-You are Inflential. Optimistic, brave, and motivational, it is not hard to imagine that “the Chosen One” came from the ranks of this house. Chivalry also numbers amongst the traits of this house/personality style. 
 
-You are Inspiring, talkative, persuasive, interesting, and people-oriented, You just love being in the limelight. Nothing makes you happier than when your bold-colored banners are flying in the Great Hall because you just won the House Cup.`);
-}
-
-function ravenClaw(){
-  console.log(`${chalk.underline.bold.yellowBright('Sorting Hat🎩 says:')}
-Congratulations ${chalk.italic.blue(userName)}! You belong to ${chalk.bold.bgYellowBright('Ravenclaw')}.
-
-${chalk.underline.bold.bgMagenta('We have found some few amazing facts about your personality as a RavenClaw:')}
-
-${chalk.yellowBright.italic(`“Or yet in wise old Ravenclaw, if you’ve a ready mind, Where those of wit and learning, will always find their kind.”
-- from Harry Potter and the Sorcerer’s Stone`)}
-
-You are task-oriented, and for the Ravenclaws this means working very hard to achieve good grades. You are analytical, systematic, and calculating. You excel at puzzles and at improving upon existing systems. 
-
-Open-minded to new possibilities, you are excellent problem-solvers because you pay attention to details and see the things that no one else sees. But fun fact is, hardly any Ravenclaw actually identifies his/her potential. You are amazing, pen my words down! `);
-}
-
-function hufflePuff(){
-   console.log(`${chalk.underline.bold.yellowBright('Sorting Hat🎩 says:')}
-Congratulations ${chalk.italic.blue(userName)}! You belong to ${chalk.bold.bgBlue('Hufflepuff')}.
-
-${chalk.underline.bold.bgMagenta('We have found some few amazing facts about your personality as a Hufflepuffian:')}
-
-${chalk.blue.italic(`“You might belong in Hufflepuff, where they are just and loyal, those patient Hufflepuffs are true and unafraid of toil.”
-- from Harry Potter and The Sorcerer’s Stone`)};
-
-You are smart, steady and thoughtful. You are loyal, true friends, and steadfast. You are quite reliable, slow and steady, and very hard workers. You always desire to have security, stability, and a team-oriented atmosphere. 
-
-Sure, you don’t tend to win the Quidditch Cup, but you’re just happy that everyone had a good time playing and no one got hurt. You love to be in the moment and enjoy it to the fullest. Less competent, pure excellence.`);
-}
 
 
 let questions = [
@@ -223,17 +243,18 @@ let questions = [
 
 ]
 
-let userName = greeting()
-log(`
-Please consider answering the following questions! Press 'Q' to Quit anytime out of the QUIZ.
+function potterMoreQuiz(){
+  let userName = greeting()
+  questions.forEach((question, index) => quizQuestionFlow(question,index+1));
+  housePrint(findMax(scores), userName)
+  goodByePrint()
 
-${chalk.bold.bgBlack.green.underline('QUESTIONS')}
 
-`)
+}
+
+potterMoreQuiz()
+
 // questions.forEach((question, index) => quizQuestionFlow(question,index+1));
-scores = [9,7,5,4]
-housePrint(findMax(scores))
-
 
 // const throbber = ora({
 //   text: ' Sorting Hat is analyzing your answers. Please Wait...',
