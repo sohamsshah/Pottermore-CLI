@@ -95,7 +95,22 @@ function findMax(lis){
 
 function housePrint(index){
   if(index === 0){
-    console.log(`${chalk.underline.bold.yellowBright('Sorting Hat🎩 says:')}
+    slytherin();
+  }
+  else if(index === 1){
+    gryffindor(); 
+  }
+  else if(index === 2){
+    hufflePuff();
+   
+  }
+  else if(index === 3){
+    ravenClaw(userName);
+  }
+}
+
+function slytherin(){
+  console.log(`${chalk.underline.bold.yellowBright('Sorting Hat🎩 says:')}
 Congratulations ${chalk.italic.blue(userName)}! You belong to ${chalk.bold.bgGreenBright('Slytherin')}.
 
 ${chalk.underline.bold.bgMagenta('We have found some few amazing facts about your personality as a Slythernin:')}
@@ -106,9 +121,11 @@ ${chalk.italic.green(`"Or perhaps in Slytherin you will make your real friends, 
 You will acheive goals through any means necessary. You are dominant,decisive, active, and results-driven.  To you, it is better to ask for forgiveness than permission. 
 
 You would rather lead than follow, and they are very self-confident. Highly competitive, You are active and task-oriented. You are risk-takers and problem solvers. You don’t care if they are liked, they care if they are in control.`);
-  }
-  else if(index === 1){
-    console.log(`${chalk.underline.bold.yellowBright('Sorting Hat🎩 says:')}
+}
+
+
+function gryffindor(){
+  console.log(`${chalk.underline.bold.yellowBright('Sorting Hat🎩 says:')}
 Congratulations ${chalk.italic.blue(userName)}! You belong to ${chalk.bold.bgRed('Gryffindor')}.
 
 ${chalk.underline.bold.bgMagenta('We have found some few amazing facts about your personality as a Gryffindor:')}
@@ -118,23 +135,11 @@ ${chalk.red.italic(`“You might belong in Gryffindor, where dwell the brave at 
 
 You are Inflential. Optimistic, brave, and motivational, it is not hard to imagine that “the Chosen One” came from the ranks of this house. Chivalry also numbers amongst the traits of this house/personality style. 
 
-You are Inspiring, talkative, persuasive, interesting, and people-oriented, You just love being in the limelight. Nothing makes you happier than when your bold-colored banners are flying in the Great Hall because you just won the House Cup.`); 
-  }
-  else if(index === 2){
-    console.log(`${chalk.underline.bold.yellowBright('Sorting Hat🎩 says:')}
-Congratulations ${chalk.italic.blue(userName)}! You belong to ${chalk.bold.bgBlue('Hufflepuff')}.
+You are Inspiring, talkative, persuasive, interesting, and people-oriented, You just love being in the limelight. Nothing makes you happier than when your bold-colored banners are flying in the Great Hall because you just won the House Cup.`);
+}
 
-${chalk.underline.bold.bgMagenta('We have found some few amazing facts about your personality as a Hufflepuffian:')}
-
-${chalk.blue.italic(`“You might belong in Hufflepuff, where they are just and loyal, those patient Hufflepuffs are true and unafraid of toil.”
-- from Harry Potter and The Sorcerer’s Stone`)};
-
-You are smart, steady and thoughtful. You are loyal, true friends, and steadfast. You are quite reliable, slow and steady, and very hard workers. You always desire to have security, stability, and a team-oriented atmosphere. 
-
-Sure, you don’t tend to win the Quidditch Cup, but you’re just happy that everyone had a good time playing and no one got hurt. You love to be in the moment and enjoy it to the fullest. Less competent, pure excellence.`);
-  }
-  else if(index === 3){
-    console.log(`${chalk.underline.bold.yellowBright('Sorting Hat🎩 says:')}
+function ravenClaw(){
+  console.log(`${chalk.underline.bold.yellowBright('Sorting Hat🎩 says:')}
 Congratulations ${chalk.italic.blue(userName)}! You belong to ${chalk.bold.bgYellowBright('Ravenclaw')}.
 
 ${chalk.underline.bold.bgMagenta('We have found some few amazing facts about your personality as a RavenClaw:')}
@@ -145,7 +150,20 @@ ${chalk.yellowBright.italic(`“Or yet in wise old Ravenclaw, if you’ve a read
 You are task-oriented, and for the Ravenclaws this means working very hard to achieve good grades. You are analytical, systematic, and calculating. You excel at puzzles and at improving upon existing systems. 
 
 Open-minded to new possibilities, you are excellent problem-solvers because you pay attention to details and see the things that no one else sees. But fun fact is, hardly any Ravenclaw actually identifies his/her potential. You are amazing, pen my words down! `);
-  }
+}
+
+function hufflePuff(){
+   console.log(`${chalk.underline.bold.yellowBright('Sorting Hat🎩 says:')}
+Congratulations ${chalk.italic.blue(userName)}! You belong to ${chalk.bold.bgBlue('Hufflepuff')}.
+
+${chalk.underline.bold.bgMagenta('We have found some few amazing facts about your personality as a Hufflepuffian:')}
+
+${chalk.blue.italic(`“You might belong in Hufflepuff, where they are just and loyal, those patient Hufflepuffs are true and unafraid of toil.”
+- from Harry Potter and The Sorcerer’s Stone`)};
+
+You are smart, steady and thoughtful. You are loyal, true friends, and steadfast. You are quite reliable, slow and steady, and very hard workers. You always desire to have security, stability, and a team-oriented atmosphere. 
+
+Sure, you don’t tend to win the Quidditch Cup, but you’re just happy that everyone had a good time playing and no one got hurt. You love to be in the moment and enjoy it to the fullest. Less competent, pure excellence.`);
 }
 
 
