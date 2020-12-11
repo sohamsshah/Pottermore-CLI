@@ -2,7 +2,7 @@
 const chalk = require('chalk');
 const readLineSync = require('readline-sync');
 const alignText = require('align-text');
-const ora = require('ora');
+// const ora = require('ora');
 
 //Global variable declaration
 let scores = [0,0,0,0]
@@ -254,7 +254,6 @@ function potterMoreQuiz(){
 
 potterMoreQuiz()
 
-// questions.forEach((question, index) => quizQuestionFlow(question,index+1));
 
 // const throbber = ora({
 //   text: ' Sorting Hat is analyzing your answers. Please Wait...',
