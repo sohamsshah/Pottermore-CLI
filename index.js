@@ -2,15 +2,17 @@
 const chalk = require('chalk');
 const readLineSync = require('readline-sync');
 const alignText = require('align-text');
-// const ora = require('ora');
 
 //Global variable declaration
 let scores = [0,0,0,0]
 const log = console.log
 
-// To greet the user
+
+// Greeting message
+
+
 function greeting(){
-  log(chalk.yellowBright.bold.bgBlack.underline("POTTERMORE QUIZ 2020 Edition"));
+  log(chalk.yellowBright.bold.bgBlack.underline("POTTERMORE QUIZ 2020 Edition ⚡"));
 
   log(`
 This is the official ` + chalk.redBright.bold.bgBlack("Pottermore Sorting Hat QUIZ 2020") + ` that you often see in Pottermore. This Quiz contains all the questions about the Sorting Hat asks on Pottermore to sort you into your deserving House.
@@ -38,6 +40,21 @@ ${chalk.bold.bgBlack.green.underline('QUESTIONS\n')}`)
 return userName;;
 
 }
+
+// Goodbye message
+
+function goodByePrint(){
+log(`${chalk.yellow.bold(`
+⚡ ⚡ ⚡ ⚡ ⚡ ⚡ ⚡ ⚡ ⚡ ⚡ ⚡ ⚡ ⚡
+
+Liked it? Know which HOUSE your friends are in and add yourself too for the HOGWARTS to see! 
+
+Comment at: https://github.com/sohamsshah/Pottermore-CLI/issues/1
+
+Thanks for playing! 
+`)}`)}
+
+// House messages
 
 function slytherin(userName){
   log(`${chalk.underline.bold.yellowBright('Sorting Hat🎩 says:')}
@@ -96,6 +113,23 @@ You are smart, steady and thoughtful. You are loyal, true friends, and steadfast
 Sure, you don’t tend to win the Quidditch Cup, but you’re just happy that everyone had a good time playing and no one got hurt. You love to be in the moment and enjoy it to the fullest. Less competent, pure excellence.`);
 }
 
+// Utility functions
+
+
+function findMax(lis){
+  let max = -1
+  let max_index = 0
+  for(let i=0; i<lis.length; i++){
+    if(max < lis[i]){
+      max = lis[i];
+      max_index = i; 
+    }
+
+  }
+  return max_index
+}
+
+
 function getRandomColor(){
   lis = ['red', 'green', 'yellow', 'blue','magenta','cyan']
   const randomElement = lis[Math.floor(Math.random() * lis.length)];
@@ -132,9 +166,13 @@ function quizQuestionPrint(question, no){
   return index; 
   }
 
+
+
 function quizScoreIncrement(index){
   scores[index]+=1;    
 }
+
+
 
 function quizQuestionFlow(question, no){
   index = quizQuestionPrint(question, no);
@@ -142,18 +180,7 @@ function quizQuestionFlow(question, no){
   console.log("\n");
 }
 
-function findMax(lis){
-  let max = -1
-  let max_index = 0
-  for(let i=0; i<lis.length; i++){
-    if(max < lis[i]){
-      max = lis[i];
-      max_index = i; 
-    }
 
-  }
-  return max_index
-}
 
 function housePrint(index,userName){
   if(index === 0){
@@ -171,19 +198,8 @@ function housePrint(index,userName){
   }
 }
 
-function goodByePrint(){
-log(`${chalk.bgYellow.bold(`
 
----------------------------
-
-
-Liked it? Know which HOUSE your friends are in and add yourself too for the HOGWARTS to see! 
-
-Comment at: https://github.com/sohamsshah/Pottermore-CLI/issues/1
-
-Thanks for playing!
-`)}`)}
-
+//Data
 
 
 
@@ -243,6 +259,8 @@ let questions = [
 
 ]
 
+// code processing pipeline
+
 function potterMoreQuiz(){
   let userName = greeting()
   questions.forEach((question, index) => quizQuestionFlow(question,index+1));
@@ -252,21 +270,9 @@ function potterMoreQuiz(){
 
 }
 
+// Driver code
+
 potterMoreQuiz()
-
-
-// const throbber = ora({
-//   text: ' Sorting Hat is analyzing your answers. Please Wait...',
-//   spinner: {
-//     frames: ['🎩', '🌠', '🍷', '🐍'],
-//     interval: 300, // Optional
-//   },
-// }).start();
-
-// // Simulating some asynchronous work for 10 seconds...
-// setTimeout(() => {
-//   throbber.stop();
-// }, 1000 * 10);
 
 
 
